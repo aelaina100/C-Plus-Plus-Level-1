@@ -1,13 +1,13 @@
-# C++ Level 1 – Core Programming Foundations
+# C++ Level 1 – Core Programming Foundations 🧱
 
-**Author:** Ahmad El-Aina  
+**Author:** **Ahmad El-Aina | ahmadelaina@gmail.com**   
 **GitHub:** https://github.com/aelaina100  
 
-> **Motto:** Divide & Conquer
+> 🧠 **Motto:** Divide & Conquer
 
 ---
 
-## Overview
+## 📌 Overview
 This repository is part of my personal automation and programming knowledge base.  
 It focuses on **C++ Level 1 fundamentals**, with an emphasis on **clear mental models, structured problem-solving, and disciplined documentation**.
 
@@ -15,18 +15,18 @@ The goal is not just to learn syntax, but to build **strong foundations** that m
 
 ---
 
-## Why This Repository Exists
+## 🎯 Why This Repository Exists
 I created this repository to:
 
-- Systematically document core programming concepts
-- Apply the **Divide & Conquer** mindset to problem solving
-- Build a long-term reference instead of relying on short-term memory
-- Practice writing clean, readable, and intentional code
-- Avoid superficial learning that causes difficulties in advanced levels
+- 📚 Systematically document core programming concepts
+- 🧩 Apply the **Divide & Conquer** mindset to problem solving
+- 🧠 Build a long-term reference instead of relying on short-term memory
+- ✍️ Practice writing clean, readable, and intentional code
+- 🚫 Avoid superficial learning that causes difficulties in advanced levels
 
 ---
 
-## What This Repository Covers
+## 🧱 What This Repository Covers
 This repository focuses on foundational C++ concepts, including:
 
 - Variables & Data Types  
@@ -43,7 +43,7 @@ Each topic is organized into folders and contains annotated examples designed to
 
 ---
 
-## Learning Philosophy
+## 🧠 Learning Philosophy
 The learning approach used here is based on:
 
 - Mental models before code
@@ -55,7 +55,7 @@ The learning approach used here is based on:
 
 ---
 
-## How to Use This Repository
+## ▶️ How to Use This Repository
 1. Clone the repository
 2. Navigate topic by topic in order
 3. Read the comments and mental-model explanations
@@ -66,14 +66,14 @@ This repository is designed to be read, executed, and reused.
 
 ---
 
-## Intended Audience
+## 👥 Intended Audience
 - Self-taught programmers building solid foundations  
 - QA / Automation Engineers strengthening core programming skills  
 - Learners who value structured thinking over shortcuts  
 
 ---
 
-## Future Plans
+## 🚀 Future Plans
 Planned extensions include:
 - Advanced C++ topics
 - STL usage
@@ -83,16 +83,11 @@ Planned extensions include:
 
 ---
 
-## Final Note
+## 🏁 Final Note
 This repository represents deliberate, structured learning guided by a simple principle:
 
-> **Divide the problem. Conquer it step by step.**
+> 🧠 **Divide the problem. Conquer it step by step.**
 
 — **Ahmad El-Aina**
 
-
-
-
-
-
-![CPLUSPLUS](https://github.com/user-attachments/assets/97428e6b-aa0a-461b-b276-c86fdf2eba18)
+![CPLUSPLUS](https://github.com/user-attachments/assets/a089cf50-0fbc-492f-9a59-5c849a96222b)
