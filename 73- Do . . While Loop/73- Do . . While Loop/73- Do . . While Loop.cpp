@@ -1,0 +1,536 @@
+// 73- Do . . While Loop.cpp 
+
+#include <iostream>
+using namespace std;
+
+/*  Do..While loop:
+
+    So far we have discussed:
+    - Use For-loop :    If you know, beforehand, the # of iterations.
+    - Use While Loop :  If you don't know the # of iterations. For example, if it depends on the user input.
+ 
+     
+           Syntax:
+
+           *******************************      *******************************
+                     WHILE LOOP                        DO–WHILE LOOP        
+           *******************************      *******************************
+            while (condition)                    do                          
+            {                                    {                           
+                // loop body                         // loop body            
+            }                                    } while (condition);                           
+                                                
+                                         
+           *******************************      *******************************
+
+     
+           For the do–while loop:
+
+           The controller ALWAYS enters the do body first and executes it once.
+
+           After the first execution, the condition is checked:
+
+           If the condition is false → the loop exits.
+
+           If the condition is true → the body executes again.
+
+           This cycle continues until the condition becomes false.
+
+           Bottom line:
+           👉 The do statement is executed AT LEAST once.
+
+
+           For the while loop:
+
+           The condition is checked before entering the loop body.
+
+           The body executes ONLY IF the condition is true.
+ 
+           Bottom line:
+           👉 The while loop body may execute zero times.
+
+
+           How it works:
+           
+                         While
+                           |
+                           v
+                     +----------------+
+             |-----> | Test Condition |----   
+             |       +----------------+   |
+             |               |            |
+             |           True|            | False
+             |               v            |
+             |       +----------------+   |
+             |-------| While Loop Body|   |
+                     +----------------+   |
+                                          |
+                                          v Exit Loop
+
+
+
+                       
+                           Do While: 
+                           
+                     +--------------------+
+             |-----> | do..while Loop Body|   
+             |       +--------------------+   
+             |               |            
+        True |               |             
+             |               v            
+             |       +----------------+   
+             |-------| Test Condition |   
+                     +----------------+   
+                             |              
+                             | False              
+                             |
+                             v  Exit Loop.
+     
+
+
+
+      
+                                                Code Snippets:
+
+     WHILE LOOP:                                                                DO–WHILE LOOP:
+    ------------------------------------------------------------------------------------------------------------------------------------------------
+
+    int i = 6;             // 1st line to write                                  int i = 6;       // 1st line to write 
+    while (i <= 5)         // 2nd line to write                                  do
+    {                                                                            {
+
+      cout << "Ahmad" << endl;    // LAST line to write                             cout << "Ahmad" << endl;     // LAST line to write 
+      i++;               // 3rd line to write                                       i++;           //2nd line to write
+
+    }                                                                            } while (i <= 5); // 3rd line to write
+
+                                                                                  
+    ------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Output: NOTHING                                                              OUTPUT: Ahmad
+*/
+
+   
+
+                                      
+/* Now, why does the Do..While statement exist ?
+  
+   Answer: Because sometimes you need to implement and THEN/LATER check:
+   
+   Let's see an example:-
+   
+  The goal is to read the following code snippet line by line.
+  Do NOT attempt to reproduce it after taking a quick glance at it.
+  read slowly one line at a time:
+
+*/
+int number;
+cout << "Please enter a positive number: \n";
+cin >> number;
+
+// After the user enters a value, the IMMEDIATE FIRST step is input validation.
+//
+// The while-condition is written so that it is TRUE when the value is INVALID.
+// In this case, the trap is that the loop body warns the user and prompts
+// them to enter a valid value.
+//
+// The loop repeats until a VALID value is entered.
+// Once the condition becomes false, the program continues.
+while (number <= 0)                //  Rule: 👉 The while-condition must represent the INVALID state.                        
+{
+    cout << "Wrong Number. Plz enter a positive number: \n";
+    cin >> number;
+}
+
+cout << "\nYou entered the number: " << number << endl;
+
+// As noticed, while-loop is utilized ONLY becasue we don't know
+// how many times the user will keep on entering the wrong number.
+// 
+// if this user enters the wrong number, then they will fall into
+// the while-loop trap that is only escapable if the correct number
+// is entered.
+// for-loop could never be used here as it utilizes a certain number of interations.
+
+
+// As noticed, the while-loop is to be included immediately 
+ // after the reading user input and all are in the same UTILITY
+ // function, we will see in the mental model below.
+
+
+  
+   // NOW THE PROBLEM IS THAT, the lines of code are repeated TWICE:
+   // one time before the while statement and another time inside the while statement. 
+   // 
+   // This deems our code unoptimized, hard to read, and also maintain.
+   // Instead, use a do-while loop:
+
+   do
+   {
+       int number;
+       cout << "Please enter a positive number: ";
+       cin >> number;
+
+   } while (number <= 0);                    //  Rule: 👉 The while-condition must represent the INVALID state.  
+
+  
+
+
+       /* =================================================================================================
+        ** B – Do..WHILE LOOP UNIVERSAL INPUT UTILITIES
+        =================================================================================================
+
+        Initializing variable(s) via reading user input MUST BE performed 
+        using do–while universal input utilities that also validate the input range for those variables.
+        --------
+        
+
+        WHY DO..WHILE LOOP for reading user input?
+        ---------------
+         • The user will be and must be prompted to enter a value at least one time.
+         • Validation can IMMEDIATELY occur only AFTER the user finishes typing the value
+           and presses the ENTER key.
+
+
+        -----------------------------------------------------------------------------------------------
+        CONTEXT (OLD APPROACH – DEPRECATED):
+        ----------------------------------- */
+        /*
+         We previously initialized variables by reading user input using a PROCEDURE
+         (pass by reference), without immediate validation.
+
+          Example: We used to do the following:
+         */
+   void ReadUserInput(int& number)
+   {
+      cout << "Enter an integer number: ";
+      cin >> number;
+   }
+
+   int main()
+   {
+       int number;
+
+       // initializing the variable 'number' via reading user input:
+       ReadUserInput(number);   // initialized without validation
+       // the variable 'number' is now initialized.
+       return 0;
+   }
+
+   /*
+   Alternatively, we could've used:
+   a FUNCTION when reading a SINGLE value that is returned:
+    (But we simply refrained from writing in this way)
+   */
+
+   int ReadUserInput()
+   {
+       int number;
+       cout << "Enter an integer number: ";
+       cin >> number;
+       return number;
+   }
+
+   int main()
+   {
+       int number = ReadUserInput();   // initialized without validation
+       return 0;
+   }
+
+   /* BUT NOW, we are CORRECTLY intializing variable(s) via reading user input:
+     -----------------------------------------------------------------------------------------------
+     The Modification /UNIVERSAL RULE (LAW) is as follows:
+     --------------------
+     • ONE input statement  → Function (returns value)
+     • MORE than one input → Procedure (no return)
+
+     REASON:
+     -------
+     A function can return ONLY one value.
+
+     • In each case, while-loop validation is included IMMEDIATELY after each cin line.
+     • All bundled together inside the same utility (Function or procedure).
+
+     Let us delve deeper:
+
+     -----------------------------------------------------------------------------------------------
+     B-1) SINGLE INPUT  →  FUNCTION
+     --------------------------------
+     Reason:
+     • A function can return ONE value only.
+
+     -----------------------------------------------------------------------------------------------
+     B-1.1) In-between range
+     ---------------------- */
+   int ReadIntNumberInRange(int from, int to)
+   {
+       int number;
+       do
+       { 
+
+       cout << "Enter a number between " << from << " & " << to << " : ";
+       cin >> number;
+
+       } while (number < from || number > to);
+
+       return number;
+   }
+
+   int main()
+   {
+       int from = 1;
+       int to = 10;
+
+       // Initializing the below variable 'number' via reading user input (using function return):
+       int number = ReadIntNumberInRange(from, to);
+       // the variable 'number' is now initialized and also validated.
+
+       cout << "The entered number is: " << number << endl;
+
+       return 0;
+   }
+   /*
+     -----------------------------------------------------------------------------------------------
+     B-1.2) Positive numbers only (specialized case)
+     -----------------------------------------------  */
+   int ReadPositiveInt()
+   {
+       int number;
+       do
+       { 
+
+       cout << "Enter a positive number: ";
+       cin >> number;
+
+       } while (number <= 0);
+      
+       return number;
+   }
+
+   int main()
+   {
+       // Initializing the below variable 'number' via reading user input (using function return):
+       int number = ReadPositiveInt();
+       // The variable 'number' is now initialized and also validated.
+
+       cout << "The entered number is: " << number << endl;
+
+       return 0;
+   }
+   /*
+    -----------------------------------------------------------------------------------------------
+    B-2) MULTIPLE INPUTS  →  PROCEDURE
+    ----------------------------------
+    Reason:
+    • A function can NOT return more than one value.
+    • Therefore, pass variables by reference.
+
+    -----------------------------------------------------------------------------------------------
+    B-2.1) Two numbers in the same range
+    ----------------------------------- */
+   void ReadTwoIntsInRange(const int& from,
+       const int& to,
+       int& num1,
+       int& num2)
+   {  
+       do
+       {
+
+       cout << "Enter first number: ";
+       cin >> num1;
+
+       } while (num1 < from || num1 > to);
+      
+       do
+       { 
+
+       cout << "Enter second number: ";
+       cin >> num2;
+
+       } while (num2 < from || num2 > to);
+       
+   }
+
+   int main()
+   {
+       int from = 1;
+       int to = 10;
+       int num1, num2;
+
+       // Initializing the variables 'num1' & 'num2' via reading user input (using a procedure with pass-by-reference):
+       ReadTwoIntsInRange(from, to, num1, num2);
+       // The variables 'num1' & 'num2' are now initialized and also validated.
+
+       cout << "First number: " << num1 << endl;
+       cout << "Second number: " << num2 << endl;
+
+       return 0;
+   }
+   /*
+   -----------------------------------------------------------------------------------------------
+   B-2.2) Two positive numbers only
+   -------------------------------- */
+   void ReadTwoPositiveInts(int& num1, int& num2)
+   {
+       do
+       {
+
+           cout << "Enter first number: ";
+           cin >> num1;
+
+       } while (num1 <= 0);
+      
+       do
+       {
+
+       cout << "Enter second number: ";
+       cin >> num2;
+
+       } while (num2 <= 0);
+      
+   }
+
+   int main()
+   {
+       int num1, num2;
+
+       // Initializing the variables 'num1' & 'num2' via reading user input (using a procedure with pass-by-reference):
+       ReadTwoPositiveInts(num1, num2);
+       // The variables 'num1' & 'num2' are now initialized and also validated.
+
+       cout << "First number: " << num1 << endl;
+       cout << "Second number: " << num2 << endl;
+
+       return 0;
+   }
+
+   //*****************************************************************************************************************************************
+  // An example of an 'akward' non-optimized coding would be:    
+
+   void ReadIntNumberInRange(int& number, const int& from, const int& to)
+   {   
+       do
+       { 
+
+       cout << "Enter a number between " << from << " & " << to << " : ";
+       cin >> number;
+
+       } while (number < from || number > to);
+      
+
+   }
+
+
+   int main()
+   {
+       int from = 1;
+       int to = 10;
+       int number;
+
+       ReadIntNumberInRange(number, from, to);
+
+       cout << "\nThe entered number is: " << number << endl;
+
+       // or: If you choose not to store the returned value, write the following:
+       // cout << "\nThe entered number is: " << ReadIntNumberInRange(from, to) << endl;
+       return 0;
+   }
+
+   /*
+     This approach is awkward because one could have simply written:
+
+         int number = ReadIntNumberInRange(from, to);
+
+     — as shown earlier — where only TWO arguments are passed and the function
+     clearly returns a valid value.
+
+     Furthermore, this version signals that an already existing and well-designed
+     utility is being ignored, and instead the code is unnecessarily complicated
+     by introducing a reference parameter with no real benefit.
+
+     In short:
+     - More parameters
+     - More cognitive load
+     - No added value
+
+     This violates the principle of simplicity and discourages reuse of clean,
+     purpose-built utilities.
+*/
+
+
+
+/*
+ Utility Function – ReadIntNumberInRange
+
+ This utility function takes the parameters 'from' and 'to' and does two things:
+ 1) Initializes a numeric variable by reading user input.
+ 2) Validates that the entered number is within the specified range.
+
+ It is called a "utility" because it can be reused across different programs and
+ contexts. Instead of rewriting the same input + validation logic multiple times
+ within one program or across multiple programs, we write this logic ONCE inside
+ a function and call it whenever needed.
+
+ In this specific case, every time we need a numeric variable to be initialized
+ via user input, we IMMEDIATELY need to validate its range. Therefore, we design
+ ONE utility function that combines reading input and validating it using a while
+  loop.
+
+ At a superficial level, this may appear to violate the Single Responsibility
+ Principle (SRP) because the function performs two actions:
+ - Reading user input
+ - Validating the input range
+
+ However, at the responsibility level, this does NOT constitute a true SRP
+ violation. Both actions serve a single responsibility:
+ "Obtaining a valid integer from the user within a specified range."
+
+ SRP is concerned with the number of reasons to change, not the number of steps
+ inside a function. In this case, there is only one reason to change: modifying
+ the rules for acquiring a valid ranged integer.
+
+ Examples of usage:
+ - Setting an age range:
+   ReadIntNumberInRange(1, 250)
+
+ - Setting a marks range:
+   ReadIntNumberInRange(0, 100)
+
+ - Setting a negative range (caller must ensure from <= to):
+   ReadIntNumberInRange(-10, -5)
+
+ Additional note:
+ In C++ Level 2, we will learn how to create our own libraries where such utility
+ functions (functional or procedural utilities) will be grouped and reused
+ across projects.
+ */
+
+
+ /*
+====================================================================================================
+ Reading utilities & their range-specific arguments
+====================================================================================================
+
+| Utility Call in main()                  | Function / Procedure | INVALID State (while-condition)                   | Design Insight                                        |
+|---------------------------------------- |----------------------|---------------------------------------------------|-------------------------------------------------------|
+| int from = 1;                           |                      |                                                   |                                                       |
+| int to   = 100;                         | Function             | while (number < from || number > to)              | Range arguments passed                                |
+| ReadIntNumberInRange(from, to)          |                      |                                                   |                                                       |
+|---------------------------------------- |----------------------|---------------------------------------------------|-------------------------------------------------------|
+| ReadPositiveInt()                       | Function             | while (number <= 0)                               | // no range arguments passed                          |
+|                                         |                      |                                                   |  → validation rule is intrinsic (see while-condition) |
+|---------------------------------------- |----------------------|---------------------------------------------------|-------------------------------------------------------|
+| ReadTwoPositiveInts(num1, num2)         | Procedure            | while (num1 <= 0)                                 | // no range arguments passed                          |
+|                                         |                      | while (num2 <= 0)                                 | → validation rule is intrinsic (see while-condition)  |
+|---------------------------------------- |----------------------|---------------------------------------------------|-------------------------------------------------------|
+| ReadTwoIntsInRange(from, to, num1, num2)| Procedure            | while (num1 < from || num1 > to)                  | Range arguments passed                                |
+|                                         |                      | while (num2 < from || num2 > to)                  |                                                       |
+  and so on...
+==============================================================================================================================================================================
+KEY TAKEAWAY:
+-------------
+• Passing range arguments means validation depends on external rules.
+• Absence of range parameters means validation is intrinsic.
+• Function vs procedure is dictated by how many variables must be initialized via reading user input — not preference.
+
+==================================================================================================== */
